@@ -201,6 +201,7 @@ body {
     grid-template-columns: 0.25fr 2fr;
     grid-template-rows: 1fr 1fr;
     gap: 0.5rem;
+
 }
 .small-text {
     align-self: end;
@@ -211,6 +212,11 @@ body {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     align-self: start;
+}
+.small-text,
+.username {
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
 .top-right .icon i {
@@ -261,6 +267,13 @@ body {
     height: 30%;
     border: none;
     cursor: pointer;
+    background-color: var(--rocket-blue);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+}
+.round-btn:hover {
+    background-color: var(--dark-rocket-blue);
 }
 
 .content {
