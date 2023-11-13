@@ -1,8 +1,62 @@
-:root {
-    --rocket-blue: #91b3fa;
-    --dark-rocket-blue: #7691cd;
-    --lightgray: rgb(245, 245, 245);
+@font-face {
+    font-family: "Solway";
+    src: 
+        url("fonts/solway-regular-webfont.woff2") format("woff2"),
+        url("fonts/solway-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
 }
+@font-face {
+    font-family: "Solway";
+    src: 
+        url("fonts/solway-light-webfont.woff2") format("woff2"),
+        url("fonts/solway-light-webfont.woff") format("woff");
+    font-weight: light;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Solway";
+    src: 
+        url("fonts/solway-bold-webfont.woff2") format("woff2"),
+        url("fonts/solway-bold-webfont.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Solway', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: normal;
+    scrollbar-width: thin;
+
+}
+
+
+:root {
+    --rocket-blue: #578bf7;
+    --dark-rocket-blue: #3b77f6;
+    --lightgray: rgb(245, 245, 245);
+    --project-border-yellow: #F7C357;
+    --trending-border-purple: #F757DB;
+    --announcements-border-green: #91FAA3;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 0.3rem;
+
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px     rgba(0,0,0,0.3); 
+}
+
 
 body {
     padding: 0px;
@@ -31,17 +85,20 @@ body {
 }
 
 
-.dashboard {
+.logo {
     display: flex;
     margin: 1rem;
+    padding: 0.5rem;
     justify-content: space-evenly;
     align-items: center;
     font-size: 3rem;
     letter-spacing: 0.3rem;
     border: 0.2rem solid white;
     border-radius: 2rem;
+    color: white;
+    font-weight: bold;
 }
-.dashboard i {
+.logo i {
     font-size: 2rem !important
 }
 
@@ -55,23 +112,27 @@ body {
     grid-template-rows: repeat(3, 1fr);
 }
 
+
 .square-btn {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;   
+    text-align: left; 
+
     border: none;
     background-color: var(--rocket-blue);
 
-    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
 }
 .square-btn:hover {
     background-color: var(--dark-rocket-blue);
     cursor: pointer;
 }
-    .square-btn i {
-        margin-left: 1rem;
-    }
+.square-btn i {
+    text-align: center;
+}
 
 .sidebar i {
     font-size: 1.5rem;
@@ -105,20 +166,28 @@ body {
 }
 .searchbar {
     height: 50%;
-    width: 80%;
+    width: 100%;
     border-radius: 6rem;
-    background-color: var(--lightgray)
+    background-color: lightgray;
+    border: none;
+    padding: 0 0 0 1rem;
 }
 
 
 .top-right {
-    display: grid;
-    grid-template-columns: 2.5fr 1fr 2fr;
+    display: flex;
     align-items: center;
-    text-align: end;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    gap: 2rem;
+    text-decoration: underline;
 }
-.top-right .name {
-    text-align: center;
+.top-right .name:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+.top-right .icon i {
+    color: white;
 }
 
 .welcome, .header-controls {
@@ -145,25 +214,29 @@ body {
 }
 
 .top-right .icon i {
-    background-color: var(--rocket-blue);
-    border-radius: 50%;
+    background-color: var(--project-border-yellow);
+    border-radius: 1rem;
     padding: 0.50rem;
     font-size: 2.5rem;
 
-    color: white;
+
 }
 .top-right .bell i {
     font-size: 2rem;
     
 }
+.top-right i:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
 
 .welcome i {
-    background-color: var(--rocket-blue);
-    border-radius: 50%;
+    background-color: var(--project-border-yellow);
+    border-radius: 1rem;
     padding: 0.65rem;
     font-size: 3.5rem;
+    color:white;
 
-    color: white;
 }
 
 .welcome .icon {
@@ -211,6 +284,7 @@ body {
     grid-row: 1 / 2;
     padding: 10px;
     font-size: 2rem;
+    font-weight: bold;
 }
 
 .project-cards {
@@ -219,19 +293,58 @@ body {
     grid-row: 2 / 3;
     overflow-y: auto;
     border-radius: 2rem;
+    gap: 1rem;
+    margin-left: 1rem;
 }
 
 .project-card {
-    min-height: 15rem;
+    display: grid;
+    grid-template-rows: 0.3fr 1fr 0.5fr;
+    grid-template-columns: 1fr 0.8fr;
 
-    border-left: 0.5rem solid var(--rocket-blue);
+    min-height: 15rem;
+    font-size: 1.5rem;
+    border-left: 0.5rem solid var(--project-border-yellow);
     box-shadow: -0.1rem 0.1rem 0.1rem 0.1rem lightgray;
-    padding:20px;
-    margin: 10px;
+    padding:2rem;
     border-radius: 0.5rem;
     max-height: 20rem;
+    max-width: 20rem;
     background-color: white;
+
+
 }
+
+.project-card-header {
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.project-card-body {
+    display: grid;
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+    font-size: 1rem;
+
+    white-space: normal;
+    text-overflow:ellipsis;
+    overflow-y: auto;
+
+    min-width: 0;
+}
+.project-card-controls {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
+.project-card-controls i:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+
 
 .announcements {
     display: grid;
@@ -242,21 +355,42 @@ body {
 .announcement-header {
     padding: 10px;
     font-size: 2rem;
+    font-weight: bold;
 }
 
 .announcement-cards {
     overflow-y: auto;
-    border-radius: 2rem;
+    border-radius: 1rem;
+    box-shadow: -0.1rem 0.1rem 0.1rem 0.1rem lightgray;
 }
 .announcement-card {
+    display: grid;
+    grid-template-rows: 0.5fr 1fr;
     padding-top: 20px;
     border-radius: 0.5rem;
     padding: 20px;
     margin: 0.2rem;
 
-    min-height: 5rem;
+    min-height: 2rem;
+
+    border-left: 0.5rem solid var(--trending-border-purple);
     background-color: white;
 }
+
+.announcement-card-header {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.announcement-card-body {
+    grid-row: 2 / 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    
+}
+
 
 .trending {
     display: grid;
@@ -267,18 +401,48 @@ body {
 .trending-header {
     padding: 10px;
     font-size: 2rem;
+    font-weight: bold;
 }
 
 .trending-cards {
     overflow-y: auto;
-    border-radius: 2rem;
+    border-radius: 1rem;
+    box-shadow: -0.1rem 0.1rem 0.1rem 0.1rem lightgray;
 }
 .trending-card {
-    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: 1fr 1fr;
     border-radius: 0.5rem;
-    padding: 20px;
+    padding: 1rem;
     margin: 0.2rem;
     min-height: 2rem;
+    column-gap: 0.5rem;
 
+    border-left: 0.5rem solid var(--announcements-border-green);
     background-color: white;
 }
+
+.trending-card-icon {
+    grid-row: 1 / 3;
+    grid-column: 1 / 2;
+    align-self: center;
+    justify-self: center;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    border: 1px black solid;
+}
+.trending-card-header {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    font-size: 1rem;
+    font-weight: bold;
+    align-self: end;
+}
+
+.trending-card-body {
+    color: rgba(0, 0, 0, 0.5);
+    align-content: center;
+}
+
